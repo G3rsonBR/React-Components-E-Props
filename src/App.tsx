@@ -1,6 +1,6 @@
 import { useState } from "react"
 import reactLogo from "./assets/react.svg"
-import "./App.css"
+import useTema from "./contexts/useTema"
 
 import Sidebar from "./components/Sidebar"
 import Titulo from "./components/Titulo"
@@ -83,6 +83,7 @@ const grupos = [
 ]
 
 function App() {
+  const { tema, alternarTema } = useTema()
   const [selecionado, setSelecionado] = useState("titulo")
   const [modalAberto, setModalAberto] = useState(false)
   const [grupoAberto, setGrupoAberto] = useState<number | null>(0)
@@ -304,7 +305,7 @@ function App() {
     grupos.flatMap((g) => g.itens).find((c) => c.id === selecionado)?.label ?? ""
 
   return (
-    <div style={{ display: "flex", fontFamily: "sans-serif" }}>
+    <div style={{ display: "flex", minHeight: "100vh", background: "var(--bg-primary)" }}>
       <Sidebar
         grupos={grupos}
         selecionado={selecionado}
@@ -312,9 +313,41 @@ function App() {
         onSelecionar={handleSelecionar}
         onToggleGrupo={handleToggleGrupo}
       />
-      <main style={{ flex: 1, padding: 32 }}>
-        <h1 style={{ marginTop: 0 }}>{nomeComponente}</h1>
-        <div style={{ border: "1px solid #e0e0e0", borderRadius: 8, padding: 24, backgroundColor: "#fff" }}>
+      <main style={{ flex: 1, padding: 32, minWidth: 0 }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 24,
+          }}
+        >
+          <h1 style={{ margin: 0, fontSize: 24 }}>{nomeComponente}</h1>
+          <button
+            type="button"
+            onClick={alternarTema}
+            style={{
+              background: "var(--bg-tertiary)",
+              color: "var(--text-primary)",
+              border: "1px solid var(--border-color)",
+              borderRadius: 6,
+              padding: "6px 14px",
+              cursor: "pointer",
+              fontSize: 14,
+            }}
+          >
+            {tema === "light" ? "\u{1F319} Dark" : "\u{2600}\u{FE0F} Light"}
+          </button>
+        </div>
+        <div
+          style={{
+            border: "1px solid var(--border-color)",
+            borderRadius: 8,
+            padding: 24,
+            background: "var(--card-bg)",
+            boxShadow: "var(--card-shadow)",
+          }}
+        >
           {renderizarComponente()}
         </div>
         <div style={{ marginTop: 32 }}>

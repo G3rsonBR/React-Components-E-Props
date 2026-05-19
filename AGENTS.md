@@ -26,6 +26,14 @@ Always use `pnpm`, never `npm`.
 - No routing; single-page SPA
 - No test framework configured
 
+## Theme system
+
+- Dark/light mode via `ThemeContext` in `src/contexts/ThemeContext.tsx`
+- `useTema()` hook in `src/contexts/useTema.ts` returns `{ tema, alternarTema }`
+- Persisted to `localStorage` key `"tema"`
+- Applied via `data-theme` attribute on `<html>`
+- All component colors use CSS custom properties from `src/index.css`
+
 ## Sidebar & navigation
 
 - `Sidebar` in `src/components/Sidebar.tsx` renders a collapsible accordion

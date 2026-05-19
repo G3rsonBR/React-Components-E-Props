@@ -18,7 +18,7 @@ function Modal({ titulo, conteudo, rodape }: ModalProps) {
     >
       <div
         style={{
-          backgroundColor: "#fff",
+          backgroundColor: "var(--card-bg)",
           borderRadius: 8,
           padding: 24,
           maxWidth: 500,

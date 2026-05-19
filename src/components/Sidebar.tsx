@@ -19,8 +19,8 @@ function Sidebar({ grupos, selecionado, grupoAberto, onSelecionar, onToggleGrupo
         minWidth: 220,
         height: "100vh",
         overflowY: "auto",
-        borderRight: "1px solid #ddd",
-        backgroundColor: "#f8f9fa",
+        borderRight: "1px solid var(--border-color)",
+        backgroundColor: "var(--bg-secondary)",
       }}
     >
       <div
@@ -28,8 +28,8 @@ function Sidebar({ grupos, selecionado, grupoAberto, onSelecionar, onToggleGrupo
           padding: "12px 16px",
           fontWeight: "bold",
           fontSize: 13,
-          borderBottom: "1px solid #ddd",
-          color: "#333",
+          borderBottom: "1px solid var(--border-color)",
+          color: "var(--text-primary)",
         }}
       >
         Componentes
@@ -51,9 +51,9 @@ function Sidebar({ grupos, selecionado, grupoAberto, onSelecionar, onToggleGrupo
                 textAlign: "left",
                 padding: "10px 16px",
                 border: "none",
-                borderBottom: "1px solid #eee",
-                background: temItemAtivo ? "#dbeafe" : "#f1f3f5",
-                color: temItemAtivo ? "#1e40af" : "#555",
+                borderBottom: "1px solid var(--border-light)",
+                background: temItemAtivo ? "var(--bg-group-active)" : "var(--bg-tertiary)",
+                color: temItemAtivo ? "var(--text-active)" : "var(--text-secondary)",
                 fontWeight: 600,
                 cursor: "pointer",
                 fontSize: 12,
@@ -62,7 +62,13 @@ function Sidebar({ grupos, selecionado, grupoAberto, onSelecionar, onToggleGrupo
               }}
             >
               {grupo.titulo}
-              <span style={{ fontSize: 10, transition: "transform 0.2s", transform: aberto ? "rotate(180deg)" : "rotate(0)" }}>
+              <span
+                style={{
+                  fontSize: 10,
+                  transition: "transform 0.2s",
+                  transform: aberto ? "rotate(180deg)" : "rotate(0)",
+                }}
+              >
                 &#9660;
               </span>
             </button>
@@ -82,9 +88,9 @@ function Sidebar({ grupos, selecionado, grupoAberto, onSelecionar, onToggleGrupo
                         padding: "8px 16px 8px 24px",
                         border: "none",
                         background: ativo
-                          ? "linear-gradient(90deg, #2563eb 3px, #e0e7ff 0)"
+                          ? `linear-gradient(90deg, var(--accent) 3px, var(--bg-active) 0)`
                           : "transparent",
-                        color: ativo ? "#1d4ed8" : "#333",
+                        color: ativo ? "var(--text-active)" : "var(--text-primary)",
                         fontWeight: ativo ? 600 : 400,
                         cursor: "pointer",
                         fontSize: 14,
